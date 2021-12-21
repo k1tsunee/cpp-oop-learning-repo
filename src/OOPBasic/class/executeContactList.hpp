@@ -6,14 +6,13 @@ class executeContactList : public contactList{
 
     public:
         executeContactList();
+        bool eventLoop();
 
+    protected:
         void addContactScript();
         void removeContactScript();
         void searchContactScript();
         void listContactsScript();
-        bool eventLoop();
-
-    protected:
         std::string readData(std::string question);
 };
 

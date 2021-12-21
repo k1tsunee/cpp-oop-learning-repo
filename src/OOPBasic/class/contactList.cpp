@@ -1,5 +1,6 @@
 #include"contactList.hpp"
 #include<string>
+#include<map>
 
 using namespace std;
 
@@ -33,6 +34,17 @@ list<contact> contactList::searchContact(string nameToSearch){
     }
 
     return result;
+}
+
+bool contactList::removeContact(std::string nameToRemove){
+    map<string, string>::iterator it = contacts.find(nameToRemove);
+
+    if(it != contacts.end()){
+        contacts.erase(it);
+        return true;
+    } else{
+        return false;
+    }
 }
 
 string contact::getName(){

@@ -63,7 +63,12 @@ void executeContactList::addContactScript(){
 }
 
 void executeContactList::removeContactScript(){
-
+    string nameToRemove = readData("Please, provide a name to exclusion: ");
+    if(removeContact(nameToRemove)){
+        cout << "Contact removed successfully!\n";
+    } else{
+        cout << "Contact not found!\n";
+    }
 }
 
 void executeContactList::listContactsScript(){
