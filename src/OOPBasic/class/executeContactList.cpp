@@ -71,19 +71,19 @@ void executeContactList::listContactsScript(){
 }
 
 void executeContactList::searchContactScript(){
-   string name = readData("Please input a name: ");
+    string name = readData("Please input a name: ");
 
-   list<contact> searchResult = searchContact(name);
+    list<contact> searchResult = searchContact(name);
 
     if(searchResult.empty()){
        cout << "No contact found.\n";
         return;
     }
 
-   list<contact>::iterator it = searchResult.begin();
+    list<contact>::iterator it = searchResult.begin();
 
     for(int i = 1; it != searchResult.end(); i++, it++){
-       cout << i << "- Name: " << it->getName() << " Phone Number:" << it->getPhone() <<endl;
+       cout << i << "- Name: " << it->getName() << "\nPhone Number: " << it->getPhone() << "\n\n";
     }
 }
 

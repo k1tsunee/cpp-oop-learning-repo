@@ -6,7 +6,7 @@ using namespace std;
 contactList::contactList(){
 }
 
-contact::contact(std::string n, std::string pn){
+contact::contact(std::string n, std::string pn): name(n), phoneNumber(pn){
 }
 
 bool contactList::addContact(string name, string phoneNumber){
