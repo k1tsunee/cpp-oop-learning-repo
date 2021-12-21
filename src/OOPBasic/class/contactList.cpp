@@ -6,6 +6,9 @@ using namespace std;
 contactList::contactList(){
 }
 
+contact::contact(std::string n, std::string pn){
+}
+
 bool contactList::addContact(string name, string phoneNumber){
     if(contacts.find(name) != contacts.end()){
         return false;
