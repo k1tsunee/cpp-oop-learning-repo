@@ -5,13 +5,22 @@
 
 using namespace std;
 
+void consoleClearScreen(){
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
 executeContactList::executeContactList(){
-   cout << "Welcome to this contacs list!\n";
+    consoleClearScreen();
+    cout << "Welcome to this contacs list!\n";
 }
 
 bool executeContactList::eventLoop(){
-   cout << "Choose a command:\n"
-              << "(A)dd\n(R)emove\n(L)ist\n(S)earch\n(E)xit\n";
+    cout << "Choose a command:\n"
+         << "(A)dd\n(R)emove\n(L)ist\n(S)earch\n(E)xit\n";
 
     char op;
 
@@ -21,26 +30,31 @@ bool executeContactList::eventLoop(){
     switch (op){
         case 'a':
         case 'A':
+            consoleClearScreen();
             addContactScript();
         return true;
 
         case 'r':
         case 'R':
+            consoleClearScreen();
             removeContactScript();
         return true;
 
         case 'l':
         case 'L':
+            consoleClearScreen();
             listContactsScript();
         return true;
 
         case 's':
         case 'S':
+            consoleClearScreen();
             searchContactScript();
         return true;
 
         case 'e':
         case 'E':
+            consoleClearScreen();
         return false;
 
         default:
@@ -52,10 +66,12 @@ bool executeContactList::eventLoop(){
 }
 
 void executeContactList::addContactScript(){
-   string name = readData("Please input a name: ");
-   string phoneNumber = readData("Please input a phone number: ");
+    string name = readData("Please input a name: ");
+    string phoneNumber = readData("Please input a phone number: ");
 
-    if(!addContact(name, phoneNumber)){
+    consoleClearScreen();
+
+    if(addContact(name, phoneNumber)){
        cout << "Contact added successfully!\n";
     } else{
        cout << "Contact updated successfully!\n";
@@ -64,6 +80,9 @@ void executeContactList::addContactScript(){
 
 void executeContactList::removeContactScript(){
     string nameToRemove = readData("Please, provide a name to exclusion: ");
+
+    consoleClearScreen();
+
     if(removeContact(nameToRemove)){
         cout << "Contact removed successfully!\n";
     } else{
@@ -72,13 +91,16 @@ void executeContactList::removeContactScript(){
 }
 
 void executeContactList::listContactsScript(){
-
+    consoleClearScreen();
+    listContacts();
 }
 
 void executeContactList::searchContactScript(){
     string name = readData("Please input a name: ");
 
     list<contact> searchResult = searchContact(name);
+
+    consoleClearScreen();
 
     if(searchResult.empty()){
        cout << "No contact found.\n";
@@ -93,9 +115,9 @@ void executeContactList::searchContactScript(){
 }
 
 std::string executeContactList::readData(std::string question){
-   string readStr;
+    string readStr;
 
-   cout << question;
+    cout << question;
     getline(std::cin, readStr);
 
     return readStr;

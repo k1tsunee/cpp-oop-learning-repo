@@ -1,4 +1,5 @@
 #include"contactList.hpp"
+#include<iostream>
 #include<string>
 #include<map>
 
@@ -45,6 +46,24 @@ bool contactList::removeContact(std::string nameToRemove){
     } else{
         return false;
     }
+}
+
+void contactList::listContacts(){
+    int n = 1;
+
+    for(map<string, string>::iterator it = contacts.begin(); it != contacts.end(); it++){
+        string name = it->first;
+        string phoneNumber = it->second;
+        cout << n << " - " << name << ": " << phoneNumber << endl;
+        n++;
+    }
+
+    if(contacts.size() == 0){
+        cout << "You have no contacts!\n";
+        return;
+    }
+
+    cout << "You have " << contacts.size() << " contact(s)!" << endl;
 }
 
 string contact::getName(){
